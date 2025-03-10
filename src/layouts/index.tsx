@@ -4,10 +4,10 @@ import HeaderLayout from "./header";
 
 const LayoutMain = ({ children }: { children: ReactNode }) => {
   return (
-    <div>
+    <>
       <HeaderLayout />
-      <div className="w-full">{children}</div>
-    </div>
+      <main>{children}</main>
+    </>
   );
 };
 

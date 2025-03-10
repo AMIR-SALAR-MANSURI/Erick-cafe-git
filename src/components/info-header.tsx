@@ -5,7 +5,7 @@ import { Button } from "./ui/button";
 
 const InfoHeader = () => {
   return (
-    <div className="flex text-center justify-between h-20 mr-3 items-center">
+    <div className="container-small flex text-center justify-between h-20 mr-3 items-center">
       <div className="text-gray-700 flex gap-2">
         <div>
           <div className="text-[#9E624C] text-xl font-bold flex justify-end">

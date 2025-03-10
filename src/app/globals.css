@@ -159,6 +159,12 @@ body {
 }
 
 
+.container-small{
+  @apply w-[calc(100%-400px)] mx-auto !important
+}
+
+
+
 @font-face {
   font-family: IRANSansfanum;
   font-style: normal;

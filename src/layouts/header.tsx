@@ -6,10 +6,8 @@ import React from "react";
 function HeaderLayout() {
   return (
     <>
-      <div className="w-full items-center max-w-[1526px] mx-auto">
-        <InfoHeader />
-        <NavHeader />
-      </div>
+      <InfoHeader />
+      <NavHeader />
     </>
   );
 }
