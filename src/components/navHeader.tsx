@@ -5,17 +5,6 @@ import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
 
 export const NavHeader = () => {
-  const [isSticky, setIsSticky] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsSticky(window.scrollY > 0);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
     <>
       <motion.header
