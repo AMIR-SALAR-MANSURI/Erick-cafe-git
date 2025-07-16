@@ -1,14 +1,12 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
 
+import CardCustome from "@/components/custome-card";
+import CustomeTab from "@/components/custome-tab";
 import "swiper/css";
 import "swiper/css/autoplay";
-import Tab from "@/components/custome-tab";
-import BottomBorderTab from "@/components/custome-tab";
-import CustomeTab from "@/components/custome-tab";
+import { Autoplay } from "swiper/modules";
 
 export default function Home() {
   return (
@@ -38,38 +36,40 @@ export default function Home() {
       </div>
 
       {/* Logo Carousel */}
-      <div className="bg-[#F2E5DA] p-5 mt-8">
-        <Swiper
-          slidesPerView="auto"
-          spaceBetween={20}
-          loop={true}
-          speed={6000}
-          autoplay={{
-            delay: 0,
-            disableOnInteraction: false,
-          }}
-          modules={[Autoplay]}
-          breakpoints={{
-            640: {
-              spaceBetween: 30,
-            },
-            1024: {
-              spaceBetween: 40,
-            },
-          }}
-        >
-          {[...Array(10)].map((_, i) => (
-            <SwiperSlide key={i} style={{ width: "auto" }}>
-              <Image
-                src="/asset/Erick.svg"
-                alt={`Logo ${i}`}
-                width={120}
-                height={25}
-                className="w-24 md:w-32 h-auto"
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+      <div className="bg-[#F2E5DA] mt-8 p-5 w-screen relative left-1/2 right-1/2 -mx-[50vw]">
+        <div className="max-w-[100vw] overflow-hidden">
+          <Swiper
+            slidesPerView="auto"
+            spaceBetween={20}
+            loop={true}
+            speed={6000}
+            autoplay={{
+              delay: 0,
+              disableOnInteraction: false,
+            }}
+            modules={[Autoplay]}
+            breakpoints={{
+              640: {
+                spaceBetween: 30,
+              },
+              1024: {
+                spaceBetween: 40,
+              },
+            }}
+          >
+            {[...Array(10)].map((_, i) => (
+              <SwiperSlide key={i} style={{ width: "auto" }}>
+                <Image
+                  src="/asset/Erick.svg"
+                  alt={`Logo ${i}`}
+                  width={120}
+                  height={25}
+                  className="w-24 md:w-32 h-auto"
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
       </div>
 
       {/* Product Categories */}
@@ -92,20 +92,8 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mt-8 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-10 gap-4">
-          <CardCustome text="قهوه ساز ها" src="/cardLogo/bean-coffee.svg" />
-          <CardCustome text="آسیاب قهوه" src="/cardLogo/blender.svg" />
-          <CardCustome text="ابزار باریستا" src="/cardLogo/eqiupment.svg" />
-          <CardCustome text="دم آوری قهوه" src="/cardLogo/coffee.svg" />
-          <CardCustome
-            text="تجهیزات بار سرد"
-            src="/cardLogo/equipment-bar.svg"
-          />
-          <CardCustome text="کرپ ساز صنعتی" src="/cardLogo/contrast.svg" />
-          <CardCustome text="بویلر آب جوش" src="/cardLogo/water.svg" />
-          <CardCustome text="سماور صنعتی" src="/cardLogo/smart-boiler.svg" />
-          <CardCustome text="شو کیک" src="/cardLogo/cake.svg" />
-          <CardCustome text="" src="/cardLogo/bean-coffee.svg" />
+        <div className="w-full mt-8 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-10 gap-4">
+          <CardCustome />
         </div>
       </div>
 
@@ -175,22 +163,3 @@ export default function Home() {
     </div>
   );
 }
-
-const CardCustome = ({ text, src }: { text: string; src: string }) => {
-  return (
-    <div className="flex flex-col items-center">
-      <div className="w-full aspect-square max-w-[86px] border rounded-lg border-gray-300 flex flex-col items-center justify-center p-2">
-        <Image
-          src={src}
-          alt="Icon"
-          width={40}
-          height={40}
-          className="w-8 h-8 md:w-10 md:h-10"
-        />
-      </div>
-      <p className="text-gray-600 mt-2 text-xs md:text-sm font-bold text-center">
-        {text}
-      </p>
-    </div>
-  );
-};

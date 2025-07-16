@@ -10,7 +10,7 @@ export const NavHeader = () => {
       <motion.header
         className={cn(
           // isSticky ? "fixed" : "sticky top-4 ",
-          "bg-[#28221E] max-w-[1526px] sticky top-6 mx-auto w-full h-16 rounded-full p-5"
+          "bg-[#28221E] max-w-[1526px] sticky top-6 mx-auto w-full h-16 rounded-full p-5 hidden  md:justify-between md:items-center"
         )}
       >
         <nav className="flex justify-between items-center h-full">
@@ -20,7 +20,7 @@ export const NavHeader = () => {
             <span>test</span>
             <span>test</span>
           </div>
-          <div className="items-center flex">
+          <div className="items-center">
             <Button
               variant={"link"}
               className="rounded-full bg-white backdrop-blur-0 border border-white/20"
