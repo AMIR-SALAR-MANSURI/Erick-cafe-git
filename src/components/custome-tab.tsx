@@ -37,147 +37,92 @@
 // };
 
 // export default BottomBorderTab;
-
+"use client";
 import React, { useState } from "react";
 
-const CustomeTab = () => {
-  const [tab, setTab] = useState<string>("");
+export type Tabs =
+  | "CoffeeBean"
+  | "CoffeeBlender"
+  | "Equipment"
+  | "WaterBoiler"
+  | "EquipmentCafe";
+
+interface TabItem {
+  key: Tabs;
+  title: string;
+  content: React.ReactNode;
+}
+
+interface Props {
+  tabs: TabItem[];
+}
+
+const CustomeTab = ({ tabs }: Props) => {
+  const [activeTab, setActiveTab] = useState<Tabs>(tabs[0].key);
+
   return (
     <div className="bg-white py-12">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="w-full">
+          {/* Mobile Select */}
           <div className="sm:hidden">
-            <label form="tabs" className="sr-only">
+            <label htmlFor="tabs" className="sr-only">
               Select a tab
             </label>
             <select
               id="tabs"
-              className="w-full appearance-none rounded-lg border-none bg-white px-3.5 py-2.5 text-base font-medium text-gray-900 shadow-sm outline outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-pink-500 focus:ring-0"
+              className="w-full rounded-lg border bg-white px-3.5 py-2.5 text-base font-medium text-gray-900 shadow-sm outline outline-1 outline-gray-300 focus:outline-pink-500"
+              value={activeTab}
+              onChange={(e) => setActiveTab(e.target.value as Tabs)}
             >
-              <option value="overview">Overview</option>
-              <option value="analytics" selected>
-                Analytics
-              </option>
-              <option value="profile">Profile</option>
-              <option value="notifications">Notifications</option>
-              <option value="plan">Plan</option>
-              <option value="settings">Settings</option>
+              {tabs.map((tab) => (
+                <option key={tab.key} value={tab.key}>
+                  {tab.title}
+                </option>
+              ))}
             </select>
           </div>
+
+          {/* Desktop Tabs */}
           <div className="hidden sm:block">
             <div className="border-b border-gray-200">
               <div
+                className="-mb-px flex items-center justify-center gap-x-8 "
                 role="tablist"
-                aria-label="Tabs"
-                className="-mb-px flex items-end gap-x-8"
               >
-                <button
-                  role="tab"
-                  aria-selected="false"
-                  aria-controls="overview-tab"
-                  id="overview"
-                  className="inline-flex border-b-2 border-transparent px-1 py-3.5 text-sm font-semibold text-gray-500 hover:border-gray-300 hover:text-gray-700"
-                >
-                  Overview
-                </button>
-                <button
-                  role="tab"
-                  aria-selected="true"
-                  aria-controls="analytics-tab"
-                  id="analytics"
-                  className="inline-flex border-b-2 border-pink-500 px-1 py-3.5 text-sm font-semibold text-pink-500"
-                >
-                  Analytics
-                </button>
-                <button
-                  role="tab"
-                  aria-selected="false"
-                  aria-controls="profile-tab"
-                  id="profile"
-                  className="inline-flex border-b-2 border-transparent px-1 py-3.5 text-sm font-semibold text-gray-500 hover:border-gray-300 hover:text-gray-700"
-                >
-                  Profile
-                </button>
-                <button
-                  role="tab"
-                  aria-selected="false"
-                  aria-controls="notifications-tab"
-                  id="notifications"
-                  className="inline-flex border-b-2 border-transparent px-1 py-3.5 text-sm font-semibold text-gray-500 hover:border-gray-300 hover:text-gray-700"
-                >
-                  Notifications
-                </button>
-                <button
-                  role="tab"
-                  aria-selected="false"
-                  aria-controls="plan-tab"
-                  id="plan"
-                  className="inline-flex border-b-2 border-transparent px-1 py-3.5 text-sm font-semibold text-gray-500 hover:border-gray-300 hover:text-gray-700"
-                >
-                  Plan
-                </button>
-                <button
-                  role="tab"
-                  aria-selected="false"
-                  aria-controls="settings-tab"
-                  id="settings"
-                  className="inline-flex border-b-2 border-transparent px-1 py-3.5 text-sm font-semibold text-gray-500 hover:border-gray-300 hover:text-gray-700"
-                >
-                  Settings
-                </button>
+                {tabs.map((tab) => (
+                  <button
+                    key={tab.key}
+                    onClick={() => setActiveTab(tab.key)}
+                    role="tab"
+                    aria-selected={activeTab === tab.key}
+                    aria-controls={`${tab.key}-tab`}
+                    className={`inline-flex border-b-2 px-1 py-3.5 text-sm font-semibold  ${
+                      activeTab === tab.key
+                        ? "border-primary text-black"
+                        : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                    }`}
+                  >
+                    {tab.title}
+                  </button>
+                ))}
               </div>
             </div>
           </div>
-          Tab panels
+
+          {/* Tab Panel Content */}
           <div className="mt-4">
-            <div
-              id="overview-tab"
-              role="tabpanel"
-              aria-labelledby="overview"
-              className="hidden"
-            >
-              Overview content
-            </div>
-            <div
-              id="analytics-tab"
-              role="tabpanel"
-              aria-labelledby="analytics"
-              className="block"
-            >
-              Analytics content
-            </div>
-            <div
-              id="profile-tab"
-              role="tabpanel"
-              aria-labelledby="profile"
-              className="hidden"
-            >
-              Profile content
-            </div>
-            <div
-              id="notifications-tab"
-              role="tabpanel"
-              aria-labelledby="notifications"
-              className="hidden"
-            >
-              Notifications content
-            </div>
-            <div
-              id="plan-tab"
-              role="tabpanel"
-              aria-labelledby="plan"
-              className="hidden"
-            >
-              Plan content
-            </div>
-            <div
-              id="settings-tab"
-              role="tabpanel"
-              aria-labelledby="settings"
-              className="hidden"
-            >
-              Settings content
-            </div>
+            {tabs.map((tab) => (
+              <div
+                key={tab.key}
+                id={`${tab.key}-tab`}
+                role="tabpanel"
+                aria-labelledby={tab.key}
+                className={activeTab === tab.key ? "block" : "hidden"}
+              >
+                {tab.content}
+              </div>
+            ))}
           </div>
         </div>
       </div>

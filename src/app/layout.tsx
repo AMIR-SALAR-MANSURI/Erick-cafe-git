@@ -11,7 +11,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body dir="rtl">
-        <LayoutMain>{children}</LayoutMain>
+        {/* <LayoutMain> */}
+        {children}
+        {/* </LayoutMain> */}
       </body>
     </html>
   );

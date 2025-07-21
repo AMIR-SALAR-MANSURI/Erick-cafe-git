@@ -10,7 +10,7 @@ export const NavHeader = () => {
       <motion.header
         className={cn(
           // isSticky ? "fixed" : "sticky top-4 ",
-          "bg-[#28221E] max-w-[1526px] sticky top-6 mx-auto w-full h-16 rounded-full p-5 hidden  md:justify-between md:items-center"
+          "bg-[#28221E] sticky top-6 mx-auto w-full h-16 rounded-full p-5   md:max-w-[1526px] lg:w-full xl:w-full"
         )}
       >
         <nav className="flex justify-between items-center h-full">

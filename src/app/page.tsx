@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import CardCustome from "@/components/custome-card";
-import CustomeTab from "@/components/custome-tab";
+import CustomeTab, { Tabs } from "@/components/custome-tab";
 import "swiper/css";
 import "swiper/css/autoplay";
 import { Autoplay } from "swiper/modules";
@@ -142,20 +142,8 @@ export default function Home() {
           }}
         >
           <div className="absolute w-[calc(100%-20px)] h-[calc(100%-20px)] flex justify-center bg-white text-white text-2xl font-bold rounded-lg shadow-lg">
-            <div className="w-full p-3">
-              <CustomeTab />
-              <div role="tablist" className="tabs tabs-border">
-                <a role="tab" className="tab text-sm sm:text-base">
-                  Tab 1
-                </a>
-                <a role="tab" className="tab tab-active text-sm sm:text-base">
-                  Tab 2
-                </a>
-                <a role="tab" className="tab text-sm sm:text-base">
-                  Tab 3
-                </a>
-              </div>
-              <br className="h-[3px] bg-red-400" />
+            <div className="w-full px-10">
+              <CustomeTab tabs={tabData} />
             </div>
           </div>
         </div>
@@ -163,3 +151,50 @@ export default function Home() {
     </div>
   );
 }
+const tabData = [
+  {
+    key: "CoffeeBean" as Tabs,
+    title: "Coffee Bean",
+    content: (
+      <div className="flex justify-center items-center">
+        Content for the blender here.
+      </div>
+    ),
+  },
+  {
+    key: "CoffeeBlender" as Tabs,
+    title: "Coffee Blender",
+    content: (
+      <div className="flex justify-center items-center">
+        Content for the blender here.
+      </div>
+    ),
+  },
+  {
+    key: "Equipment" as Tabs,
+    title: "Equipment",
+    content: (
+      <div className="flex justify-center items-center">
+        Content for the blender here.
+      </div>
+    ),
+  },
+  {
+    key: "test" as Tabs,
+    title: "Coffee Blender",
+    content: (
+      <div className="flex justify-center items-center">
+        Content for the blender here.
+      </div>
+    ),
+  },
+  {
+    key: "test1" as Tabs,
+    title: "Equipment",
+    content: (
+      <div className="flex justify-center items-center">
+        Content for the blender here.
+      </div>
+    ),
+  },
+];
